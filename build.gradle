@@ -12,10 +12,6 @@ repositories {
     maven { url = "https://jitpack.io/" }
     maven { url = "https://maven.nucleoid.xyz/" }
     maven { url = "https://maven.gegy.dev/" }
-    maven {
-        url = "http://10.0.0.106:8081/service/rest/repository/browse/maven-releases/"
-        allowInsecureProtocol = true
-    }
 }
 
 dependencies {
