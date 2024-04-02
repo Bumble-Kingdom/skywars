@@ -1,5 +1,6 @@
 package us.potatoboy.skywars;
 
+import buzz.blobanium.skywars.Entrypoint;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.Identifier;
 import org.apache.logging.log4j.LogManager;
@@ -32,6 +33,8 @@ public class SkyWars implements ModInitializer {
         SWBlocks.register();
 
         KitRegistry.register();
+
+        Entrypoint.onInitialize();
     }
 
     public static Identifier identifier(String value) {

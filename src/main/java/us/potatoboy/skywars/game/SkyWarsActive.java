@@ -1,5 +1,6 @@
 package us.potatoboy.skywars.game;
 
+import buzz.blobanium.bumblekingdomcore.economy.EconomyManager;
 import com.google.common.collect.Multimap;
 import eu.pb4.sidebars.api.Sidebar;
 import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
@@ -354,6 +355,10 @@ public class SkyWarsActive {
         PlayerSet players = this.gameSpace.getPlayers();
         players.sendMessage(message);
         players.playSound(SoundEvents.ENTITY_VILLAGER_YES);
+        this.gameSpace.getPlayers().forEach((player) -> {
+            EconomyManager.addToUser(player, 5);
+            player.sendMessage(Text.translatableWithFallback("bumblekingdom.game.skywars.gameend", "Thanks for playing skywars! You got 5 Honey shards!!", TranslatableTextContent.EMPTY_ARGUMENTS));
+        });
     }
 
     private Text getWinMessage(GameTeam winningTeam) {
