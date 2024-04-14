@@ -1,6 +1,7 @@
 package us.potatoboy.skywars.game;
 
 import buzz.blobanium.bumblekingdomcore.economy.EconomyManager;
+import buzz.blobanium.skywars.Entrypoint;
 import com.google.common.collect.Multimap;
 import eu.pb4.sidebars.api.Sidebar;
 import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
@@ -187,6 +188,8 @@ public class SkyWarsActive {
     }
 
     private void addPlayer(ServerPlayerEntity player) {
+        Entrypoint.onPlayerJoin(player);
+
         globalSidebar.addPlayer(player);
         spawnSpectator(player);
     }
@@ -201,6 +204,8 @@ public class SkyWarsActive {
     private void removePlayer(ServerPlayerEntity player) {
         eliminatePlayer(PlayerRef.of(player));
         globalSidebar.removePlayer(player);
+
+        Entrypoint.onPlayerQuit(player);
     }
 
     private ActionResult onPlayerDamage(ServerPlayerEntity player, DamageSource source, float amount) {
